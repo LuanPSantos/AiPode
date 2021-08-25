@@ -1,4 +1,4 @@
-package com.codeplays.trainee.aipode.infra.view.model;
+package com.codeplays.trainee.aipode.view.model;
 
 public class MediaPlayerViewModel {
 

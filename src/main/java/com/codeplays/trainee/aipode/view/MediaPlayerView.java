@@ -1,12 +1,13 @@
-package com.codeplays.trainee.aipode.infra.view;
+package com.codeplays.trainee.aipode.view;
 
-import com.codeplays.trainee.aipode.infra.view.mediaplayer.MediaPlayerManager;
-import com.codeplays.trainee.aipode.infra.controller.CurrentTrackController;
-import com.codeplays.trainee.aipode.infra.controller.CurrentTrackController.CurrentTrackResponse;
-import com.codeplays.trainee.aipode.infra.controller.NextTrackController;
-import com.codeplays.trainee.aipode.infra.controller.NextTrackController.NextTrackResponse;
-import com.codeplays.trainee.aipode.infra.controller.PreviousTrackController;
-import com.codeplays.trainee.aipode.infra.controller.PreviousTrackController.PreviousTrackResponse;
+import com.codeplays.trainee.aipode.adapter.presenter.GetCurrentTrackPresenter.GetCurrentTrackViewModel;
+import com.codeplays.trainee.aipode.adapter.presenter.GetNextTrackPresenter.GetNextTrackViewModel;
+import com.codeplays.trainee.aipode.adapter.presenter.GetPreviousTrackPresenter;
+import com.codeplays.trainee.aipode.adapter.presenter.GetPreviousTrackPresenter.GetPreviousTrackViewModel;
+import com.codeplays.trainee.aipode.view.mediaplayer.MediaPlayerManager;
+import com.codeplays.trainee.aipode.adapter.controller.CurrentTrackController;
+import com.codeplays.trainee.aipode.adapter.controller.NextTrackController;
+import com.codeplays.trainee.aipode.adapter.controller.PreviousTrackController;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.media.Media;
@@ -32,9 +33,9 @@ public class MediaPlayerView {
 
     @FXML
     protected void initialize() {
-        CurrentTrackResponse response = currentTrackController.getCurrentTrack();
+        GetCurrentTrackViewModel viewModel = currentTrackController.getCurrentTrack();
 
-        setNewMedia(response.getMedia());
+        setNewMedia(new Media(viewModel.getSourceLocation()));
     }
 
     @FXML
@@ -44,16 +45,16 @@ public class MediaPlayerView {
 
     @FXML
     public void onNext() {
-        NextTrackResponse response = nextTrackController.getNextTrack();
+        GetNextTrackViewModel viewModel = nextTrackController.getNextTrack();
 
-        setNewMedia(response.getMedia());
+        setNewMedia(new Media(viewModel.getSourceLocation()));
     }
 
     @FXML
     public void onPrevious() {
-        PreviousTrackResponse response = previousTrackController.getPreviousTrack();
+        GetPreviousTrackViewModel viewModel = previousTrackController.getPreviousTrack();
 
-        setNewMedia(response.getMedia());
+        setNewMedia(new Media(viewModel.getSourceLocation()));
     }
 
     private void setNewMedia(Media media) {

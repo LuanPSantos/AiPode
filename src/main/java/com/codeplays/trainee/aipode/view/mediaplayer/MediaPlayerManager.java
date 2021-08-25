@@ -1,6 +1,6 @@
-package com.codeplays.trainee.aipode.infra.view.mediaplayer;
+package com.codeplays.trainee.aipode.view.mediaplayer;
 
-import com.codeplays.trainee.aipode.infra.view.model.MediaPlayerViewModel;
+import com.codeplays.trainee.aipode.view.model.MediaPlayerViewModel;
 import javafx.collections.MapChangeListener;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;

@@ -1,20 +1,23 @@
-package com.codeplays.trainee.aipode.app.usecase;
+package com.codeplays.trainee.aipode.app.usecase.nexttrack;
 
 import com.codeplays.trainee.aipode.domain.track.gateway.TrackGateway;
 import com.codeplays.trainee.aipode.domain.track.model.Track;
 
-public class GetNextTrackUseCase {
+public class GetNextTrackUseCase implements GetNextTrackInputPort {
 
     private final TrackGateway trackGateway;
+    private final GetNextTrackOutputPort<?> outputPort;
 
-    public GetNextTrackUseCase(TrackGateway trackGateway) {
+    public GetNextTrackUseCase(TrackGateway trackGateway, GetNextTrackOutputPort<?> outputPort) {
         this.trackGateway = trackGateway;
+        this.outputPort = outputPort;
     }
 
-    public Output execute() {
+    @Override
+    public void getNextTrack() {
         Track track = trackGateway.nextTrack();
 
-        return new Output(track);
+        outputPort.setOutputModel(new GetNextTrackOutputPort.ResponseModel(track));
     }
 
     public static class Output {

@@ -1,4 +1,4 @@
-package com.codeplays.trainee.aipode.infra.gateway;
+package com.codeplays.trainee.aipode.adapter.gateway;
 
 import com.codeplays.trainee.aipode.domain.track.gateway.TrackGateway;
 import com.codeplays.trainee.aipode.domain.track.model.Track;
